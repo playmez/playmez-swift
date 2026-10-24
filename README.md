@@ -1,6 +1,6 @@
 # SpinlineEmbed for iOS
 
-Put a [Spinline](https://playmez.com) game in your iOS app. A `WKWebView`-backed `UIView` plus a SwiftUI wrapper that relay the game's events. iOS 14+. Points are virtual, non-transferable and worth nothing.
+Put a [Playmez](https://playmez.com) game in your iOS app. A `WKWebView`-backed `UIView` plus a SwiftUI wrapper that relay the game's events. iOS 14+. Points are virtual, non-transferable and worth nothing.
 
 ## Install (Swift Package Manager)
 
@@ -28,8 +28,8 @@ game.open(launchUrl: launchUrl)
 
 Events: `ready` (`game`), `result` (`game`, `won`, `net`), `close`, `error` (`code`, `message`), `resize` (`height`).
 
-Voice at shared tables (only when Spinline switched it on for you): the view grants microphone capture to the game origin; add `NSMicrophoneUsageDescription` to Info.plist, or set `allowMicrophone = false`.
+Voice at shared tables (only when Playmez switched it on for you): the view grants microphone capture to the game origin; add `NSMicrophoneUsageDescription` to Info.plist, or set `allowMicrophone = false`.
 
 Full guide: https://playmez.com/developers
 
-MIT © Spinline
+MIT © Playmez

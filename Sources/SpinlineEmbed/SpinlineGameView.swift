@@ -1,4 +1,4 @@
-// Spinline game for iOS (UIKit view + SwiftUI wrapper).
+// Playmez game for iOS (UIKit view + SwiftUI wrapper).
 //
 //   UIKit:
 //     let game = SpinlineGameView()
@@ -11,7 +11,7 @@
 //     SpinlineGame(launchUrl: url, onEvent: { e in ... }, onClose: { dismiss() })
 //
 // Voice at shared tables: the view grants microphone capture to the game origin and nothing else;
-// add NSMicrophoneUsageDescription to Info.plist. Only needed when Spinline has switched voice on
+// add NSMicrophoneUsageDescription to Info.plist. Only needed when Playmez has switched voice on
 // for you; set allowMicrophone = false to refuse it.
 #if canImport(UIKit)
 import SwiftUI

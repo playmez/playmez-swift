@@ -13,7 +13,7 @@ public struct SpinlineEvent {
         self.data = data
     }
 
-    /// Builds an event from a bridge message body; nil for anything that is not a Spinline event.
+    /// Builds an event from a bridge message body; nil for anything that is not a Playmez event.
     public init?(body: Any) {
         guard let dict = body as? [String: Any], dict["source"] as? String == "spinline", let type = dict["type"] as? String else { return nil }
         self.init(type: type, data: dict)

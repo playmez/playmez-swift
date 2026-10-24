@@ -1,10 +1,10 @@
 import Foundation
 
 /// The package version, for your logs.
-public let spinlineSdkVersion = "1.0.2"
+public let playmezSdkVersion = "2.0.0"
 
 /// One message from the game: `ready`, `result`, `close`, `error` or `resize`.
-public struct SpinlineEvent {
+public struct PlaymezEvent {
     public let type: String
     public let data: [String: Any]
 

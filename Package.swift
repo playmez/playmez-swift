@@ -2,13 +2,13 @@
 import PackageDescription
 
 let package = Package(
-    name: "SpinlineEmbed",
+    name: "PlaymezEmbed",
     platforms: [.iOS(.v14), .macOS(.v12)],
     products: [
-        .library(name: "SpinlineEmbed", targets: ["SpinlineEmbed"]),
+        .library(name: "PlaymezEmbed", targets: ["PlaymezEmbed"]),
     ],
     targets: [
-        .target(name: "SpinlineEmbed", path: "Sources/SpinlineEmbed"),
-        .testTarget(name: "SpinlineEmbedTests", dependencies: ["SpinlineEmbed"], path: "Tests/SpinlineEmbedTests"),
+        .target(name: "PlaymezEmbed", path: "Sources/PlaymezEmbed"),
+        .testTarget(name: "PlaymezEmbedTests", dependencies: ["PlaymezEmbed"], path: "Tests/PlaymezEmbedTests"),
     ]
 )

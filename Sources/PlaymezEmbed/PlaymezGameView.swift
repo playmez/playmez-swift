@@ -1,14 +1,14 @@
 // Playmez game for iOS (UIKit view + SwiftUI wrapper).
 //
 //   UIKit:
-//     let game = SpinlineGameView()
+//     let game = PlaymezGameView()
 //     game.onEvent = { e in print(e.type, e.game ?? "", e.net) }
 //     game.onClose = { [weak self] in self?.dismiss(animated: true) }
 //     view.addSubview(game)            // pin to the safe area
 //     game.open(launchUrl: url)        // from YOUR backend (POST /partner/launch); never ship the API key
 //
 //   SwiftUI:
-//     SpinlineGame(launchUrl: url, onEvent: { e in ... }, onClose: { dismiss() })
+//     PlaymezGame(launchUrl: url, onEvent: { e in ... }, onClose: { dismiss() })
 //
 // Voice at shared tables: the view grants microphone capture to the game origin and nothing else;
 // add NSMicrophoneUsageDescription to Info.plist. Only needed when Playmez has switched voice on
@@ -18,8 +18,8 @@ import SwiftUI
 import UIKit
 import WebKit
 
-public final class SpinlineGameView: UIView {
-    public var onEvent: ((SpinlineEvent) -> Void)?
+public final class PlaymezGameView: UIView {
+    public var onEvent: ((PlaymezEvent) -> Void)?
     /// The player tapped Leave or Close: dismiss the screen or hide the view.
     public var onClose: (() -> Void)?
     /// Let the game use the microphone for voice at shared tables.
@@ -60,7 +60,7 @@ public final class SpinlineGameView: UIView {
     }
 
     fileprivate func receive(_ body: Any) {
-        guard let event = SpinlineEvent(body: body) else { return }
+        guard let event = PlaymezEvent(body: body) else { return }
         onEvent?(event)
         if event.type == "close" { onClose?() }
     }
@@ -73,7 +73,7 @@ public final class SpinlineGameView: UIView {
 
     /// WKUserContentController retains its handlers; this proxy keeps the view free of a retain cycle.
     private final class MessageHandler: NSObject, WKScriptMessageHandler, WKUIDelegate {
-        weak var owner: SpinlineGameView?
+        weak var owner: PlaymezGameView?
 
         func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
             owner?.receive(message.body)
@@ -86,21 +86,21 @@ public final class SpinlineGameView: UIView {
     }
 }
 
-public struct SpinlineGame: UIViewRepresentable {
+public struct PlaymezGame: UIViewRepresentable {
     public let launchUrl: URL
-    public var onEvent: ((SpinlineEvent) -> Void)? = nil
+    public var onEvent: ((PlaymezEvent) -> Void)? = nil
     public var onClose: (() -> Void)? = nil
     public var allowMicrophone = true
 
-    public init(launchUrl: URL, onEvent: ((SpinlineEvent) -> Void)? = nil, onClose: (() -> Void)? = nil, allowMicrophone: Bool = true) {
+    public init(launchUrl: URL, onEvent: ((PlaymezEvent) -> Void)? = nil, onClose: (() -> Void)? = nil, allowMicrophone: Bool = true) {
         self.launchUrl = launchUrl
         self.onEvent = onEvent
         self.onClose = onClose
         self.allowMicrophone = allowMicrophone
     }
 
-    public func makeUIView(context: Context) -> SpinlineGameView {
-        let view = SpinlineGameView()
+    public func makeUIView(context: Context) -> PlaymezGameView {
+        let view = PlaymezGameView()
         view.onEvent = onEvent
         view.onClose = onClose
         view.allowMicrophone = allowMicrophone
@@ -108,7 +108,7 @@ public struct SpinlineGame: UIViewRepresentable {
         return view
     }
 
-    public func updateUIView(_ uiView: SpinlineGameView, context: Context) {
+    public func updateUIView(_ uiView: PlaymezGameView, context: Context) {
         uiView.onEvent = onEvent
         uiView.onClose = onClose
         uiView.allowMicrophone = allowMicrophone

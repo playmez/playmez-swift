@@ -22,6 +22,16 @@ final class PlaymezEventTests: XCTestCase {
         XCTAssertEqual(try XCTUnwrap(PlaymezEvent(json: #"{"source":"spinline","type":"resize","height":720}"#)).height, 720)
     }
 
+    func testExposesLocalFinish() throws {
+        let e = try XCTUnwrap(PlaymezEvent(json: #"{"source":"spinline","type":"local_finished","game":"chess","draw":false,"won":true}"#))
+        XCTAssertEqual(e.type, "local_finished")
+        XCTAssertEqual(e.game, "chess")
+        XCTAssertEqual(e.wonVsComputer, true)
+        let together = try XCTUnwrap(PlaymezEvent(json: #"{"source":"spinline","type":"local_finished","game":"ludo","draw":true,"won":null}"#))
+        XCTAssertTrue(together.draw)
+        XCTAssertNil(together.wonVsComputer)
+    }
+
     func testVersionIsSet() {
         XCTAssertTrue(playmezSdkVersion.range(of: #"^\d+\.\d+\.\d+"#, options: .regularExpression) != nil)
     }

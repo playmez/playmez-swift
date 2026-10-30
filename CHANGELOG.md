@@ -2,6 +2,13 @@
 
 All five packages (`playmez-embed`, `playmez-embed-react-native`, `playmez_embed`, `com.playmez:embed`, `PlaymezEmbed`) share one version, kept in `sdk/VERSION`.
 
+## 2.1.0
+
+- Offline on the device: a launch with `mode: "local"` runs the game on the player's device with no network once loaded. Every table game plays alone against the computer (Ludo, Chess, Carrom, 8-ball, Callbreak, Rummy, Teen Patti, Tambola, Trivia, Roulette, Crash), and Ludo, Chess, Carrom and 8-ball can also be played by people passing the device. Every package runs it with no code change.
+- New event `local_finished` (`game`, `draw`, `won`) when a local game ends. `won` is the player's result against the computer, null for people together or a game of chance. No names leave the device. Android, iOS and Flutter `PlaymezEvent` gain `draw` and `wonVsComputer`; the JS and React Native `PlaymezEvent` unions list the event.
+- JS types: `PlaymezLaunchMode` (`computer`, `online`, `local`), `PlaymezLocalGameId` and `PlaymezLocalTogetherGameId`; `PlaymezGameId` lists `pool`.
+- WordPress plugin 1.1.0: `[playmez game="rummy" mode="local"]`; `mode="online"` joins the older `online="1"`.
+
 ## 2.0.0
 
 - Renamed to Playmez. New package names: `playmez-embed` and `playmez-embed-react-native` (npm), `playmez_embed` (pub.dev), `com.github.playmez:playmez-android` (JitPack, package `com.playmez.embed`) and the Swift package `PlaymezEmbed` at `github.com/playmez/playmez-swift`. Classes follow: `PlaymezGame`, `PlaymezGameView`, `PlaymezEvent`, `PlaymezBridge`.

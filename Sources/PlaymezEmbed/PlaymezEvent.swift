@@ -1,9 +1,9 @@
 import Foundation
 
 /// The package version, for your logs.
-public let playmezSdkVersion = "2.0.0"
+public let playmezSdkVersion = "2.1.0"
 
-/// One message from the game: `ready`, `result`, `close`, `error` or `resize`.
+/// One message from the game: `ready`, `result`, `close`, `error`, `resize` or `local_finished`.
 public struct PlaymezEvent {
     public let type: String
     public let data: [String: Any]
@@ -31,4 +31,8 @@ public struct PlaymezEvent {
     public var code: String? { data["code"] as? String }
     public var message: String? { data["message"] as? String }
     public var height: Int? { (data["height"] as? NSNumber)?.intValue }
+    /// Whether a local game ended in a draw (`local_finished` events).
+    public var draw: Bool { data["draw"] as? Bool ?? false }
+    /// The player's result against the computer (`local_finished`); nil for people together or a game of chance.
+    public var wonVsComputer: Bool? { data["won"] as? Bool }
 }

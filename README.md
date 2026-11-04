@@ -4,10 +4,10 @@ Put a [Playmez](https://playmez.com) game in your iOS app. A `WKWebView`-backed 
 
 ## Install (Swift Package Manager)
 
-Xcode: File → Add Package Dependencies → `https://github.com/playmez/playmez-swift`, from `2.0.0`.
+Xcode: File → Add Package Dependencies → `https://github.com/playmez/playmez-swift`, from `2.2.0`.
 
 ```swift
-.package(url: "https://github.com/playmez/playmez-swift", from: "2.0.0")
+.package(url: "https://github.com/playmez/playmez-swift", from: "2.2.0")
 ```
 
 ## Use

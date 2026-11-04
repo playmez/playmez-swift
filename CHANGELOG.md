@@ -4,6 +4,7 @@ All five packages (`playmez-embed`, `playmez-embed-react-native`, `playmez_embed
 
 ## 2.2.0
 
+- First release on the registries since 2.0.0: 2.1.0 was tagged but never published, so 2.2.0 also carries everything listed under 2.1.0.
 - Live shows: a partner hosts Playmez's party shows (Housie Party, Quiz, Herd, Hot Seat, Room Verdict, Team Survey, Be the Few, Live Vote) with its brand as the host on the show's card, on every phone and on the TV screen. Open one with `POST /partner/shows`, then launch the presenter with `role: "host"` and players with `POST /partner/shows/:code/launch`. Every package opens the launch URL with no code change.
 - Each show is private (only the partner's players) or network (listed in Live now on playmez.com and in other network partners' apps, "Hosted by" the partner's vetted brand). Network shows need the Playmez network and cross-promotion.
 - `ready` of a show launch carries `game: "show"`, `show` (the kind), `showCode` and `role`. Android, iOS and Flutter `PlaymezEvent` gain `show`, `showCode` and `role`; JS and React Native add `PlaymezShowKind` and `PlaymezShowRole` (JS also `PlaymezShowAudience`).

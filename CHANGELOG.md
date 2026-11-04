@@ -2,6 +2,14 @@
 
 All five packages (`playmez-embed`, `playmez-embed-react-native`, `playmez_embed`, `com.playmez:embed`, `PlaymezEmbed`) share one version, kept in `sdk/VERSION`.
 
+## 2.2.0
+
+- Live shows: a partner hosts Playmez's party shows (Housie Party, Quiz, Herd, Hot Seat, Room Verdict, Team Survey, Be the Few, Live Vote) with its brand as the host on the show's card, on every phone and on the TV screen. Open one with `POST /partner/shows`, then launch the presenter with `role: "host"` and players with `POST /partner/shows/:code/launch`. Every package opens the launch URL with no code change.
+- Each show is private (only the partner's players) or network (listed in Live now on playmez.com and in other network partners' apps, "Hosted by" the partner's vetted brand). Network shows need the Playmez network and cross-promotion.
+- `ready` of a show launch carries `game: "show"`, `show` (the kind), `showCode` and `role`. Android, iOS and Flutter `PlaymezEvent` gain `show`, `showCode` and `role`; JS and React Native add `PlaymezShowKind` and `PlaymezShowRole` (JS also `PlaymezShowAudience`).
+- Webhooks: `session.opened` carries `showCode` for a show launch, where `game` is null.
+- Server helpers (`launch.mjs`, `launch.php`, `launch.py`) gain `createPlaymezShow`, `launchPlaymezShow` and `closePlaymezShow` (`create_playmez_show`… in Python).
+
 ## 2.1.0
 
 - Offline on the device: a launch with `mode: "local"` runs the game on the player's device with no network once loaded. Every table game plays alone against the computer (Ludo, Chess, Carrom, 8-ball, Callbreak, Rummy, Teen Patti, Tambola, Trivia, Roulette, Crash), and Ludo, Chess, Carrom and 8-ball can also be played by people passing the device. Every package runs it with no code change.

@@ -26,7 +26,7 @@ view.addSubview(game)
 game.open(launchUrl: launchUrl)
 ```
 
-Events: `ready` (`game`), `result` (`game`, `won`, `net`), `close`, `error` (`code`, `message`), `resize` (`height`), `local_finished` (`game`, `draw`, `won`). Launch with `mode: "local"` and the game runs on the device with no network once it has loaded: every table game alone against the computer, or people passing the device in Ludo, Chess, Carrom and 8-ball. `won` is the player's result against the computer (null for people together or a game of chance); no names leave the device.
+Events: `ready` (`game`), `result` (`game`, `won`, `net`), `close`, `error` (`code`, `message`), `resize` (`height`), `local_finished` (`game`, `draw`, `won`). Launch with `mode: "local"` and the game runs on the device with no network once it has loaded: every table game alone against the computer, or people passing the device in Ludo, Chess, Carrom and 8-ball. `won` is the player's result against the computer (null for people together or a game of chance); no names leave the device. Show launches (`POST /partner/shows/:code/launch`) open a live show the partner hosts: `ready` then carries `game: "show"`, `show` (its kind, such as `quiz`), `showCode` and `role` (`host` or `player`).
 
 Voice at shared tables (only when Playmez switched it on for you): the view grants microphone capture to the game origin; add `NSMicrophoneUsageDescription` to Info.plist, or set `allowMicrophone = false`.
 

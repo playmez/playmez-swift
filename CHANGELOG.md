@@ -12,6 +12,7 @@ All five packages (`playmez-embed`, `playmez-embed-react-native`, `playmez_embed
 - Server helpers (`launch.mjs`, `launch.php`, `launch.py`) gain `createPlaymezShow`, `launchPlaymezShow` and `closePlaymezShow` (`create_playmez_show`… in Python).
 - New games: `court_piece`, `twenty_nine`, `draw_guess` (Draw and Guess) and `antakshari` join `PlaymezGameId`; `court_piece`, `twenty_nine` and `draw_guess` join `PlaymezLocalGameId`, and `draw_guess` joins `PlaymezLocalTogetherGameId` (people only, 2 to 12 passing one device; no computer player). Draw and Guess and Antakshari are held until Playmez releases them: a launch fails with `403 GAME_HELD` until then. Every package opens them with no code change.
 - WordPress plugin 1.2.0: `game="court_piece"`, `"twenty_nine"` and `"draw_guess"`.
+- Live shows: `ipl` (IPL live room) joins `PlaymezShowKind`. A partner's players call each over of a live match together. Held until Playmez releases it: `POST /partner/shows` with `kind: "ipl"` answers `403` until then. Every package opens the launch URL with no code change.
 
 ## 2.1.0
 
